@@ -1,19 +1,48 @@
 # go-todo-app
 golangでTodoアプリの作成。
 
+## setup
+
+### ent.(ORM)
+
+```terminal
+//code generatorを備えているためCLIツールを取ってくる
+go get entgo.io/ent/cmd/ent
+
+//MySQLドライバ
+go get github.com/go-sql-driver/mysql
+
+//スキーマの初期化
+go run entgo.io/ent/cmd/ent init User Todo
+
+//もろもろファイル生成
+go generate ./ent
+
+//マイグレーション実行確認
+docker-compose exec db mysql -u docker -pdocker todo-app
 ```
+
+## ER図
+
+```mermaid
 erDiagram
 
-users ||--o{ articles: ""
+User ||--o{ Todo : ""
 
-users {
-  string name
-  string email
-  integer age
+User {
+  int id
+  varchar name
+  varchar email
+  int age
 }
 
-articles {
-  string title
-  text text
+Todo {
+  int id
+  int user_id
+  varchar title
+  varchar detail
+  DateTime created_at
+  DateTime updated_at
+  DateTime completed_at
 }
 ```

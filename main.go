@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
-	"todo-app/application/controller"
+	"log"
+	"todo-app/data"
 )
 
 func main() {
-	fmt.Println("Hello world!!")
-	controller.Controller()
+	data.EntClient()
+	log.Println("done.")
 }
