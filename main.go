@@ -10,7 +10,7 @@ import (
 
 func main() {
 	ctx := context.Background()
-	client := data.EntClient(ctx, "docker:docker@/todo")
+	client := data.EntClient(ctx, "docker:docker@/todo?parseTime=true")
 	userRepository := user.NewUserRepository(client)
 	defer client.Close()
 

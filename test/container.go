@@ -55,7 +55,7 @@ func SetupMySQLContainer() (func(), *ent.Client) {
 	p, _ := container.MappedPort(ctx, "3306/tcp")
 	port := p.Int()
 
-	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
+	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?parseTime=true",
 		dbUsername, dbPassword, host, port, dbName)
 
 	log.Println(connectionString)

@@ -30,6 +30,9 @@ go get github.com/testcontainers/testcontainers-go
 
 //testify(テスティングフレームワーク)
 go get github.com/stretchr/testify
+
+//gomock
+go install github.com/golang/mock/mockgen@v1.6.0
 ```
 
 ## ER図
