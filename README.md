@@ -22,6 +22,16 @@ go generate ./ent
 docker-compose exec db mysql -u docker -pdocker todo-app
 ```
 
+### test
+
+```terminal
+//testcontainers
+go get github.com/testcontainers/testcontainers-go
+
+//testify(テスティングフレームワーク)
+go get github.com/stretchr/testify
+```
+
 ## ER図
 
 ```mermaid
