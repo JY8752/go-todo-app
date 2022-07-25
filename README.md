@@ -33,6 +33,12 @@ go get github.com/stretchr/testify
 
 //gomock
 go install github.com/golang/mock/mockgen@v1.6.0
+
+//mock作成
+mockgen -source=./domain/service/user/userservice.go -destination=./mock/domain/service/user/user.go
+
+//import認識しなかったら
+go mod tidy
 ```
 
 ## ER図

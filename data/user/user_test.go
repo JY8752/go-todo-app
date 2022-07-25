@@ -34,7 +34,7 @@ func TestFindUser(t *testing.T) {
 	user, _ := userRepository.FindById(ctx, created.ID)
 
 	//then
-	assertUser(t, created, user)
+	test.AssertUser(t, created, user)
 }
 
 func TestFindAll(t *testing.T) {
@@ -49,11 +49,4 @@ func TestFindAll(t *testing.T) {
 
 	//then
 	assert.Equal(t, 2, len(users))
-}
-
-func assertUser(t *testing.T, expected *ent.User, actual *ent.User) {
-	assert.Equal(t, expected.ID, actual.ID)
-	assert.Equal(t, expected.Name, actual.Name)
-	assert.Equal(t, expected.Email, actual.Email)
-	assert.Equal(t, expected.Age, actual.Age)
 }
