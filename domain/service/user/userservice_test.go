@@ -20,7 +20,7 @@ func TestCreate(t *testing.T) {
 	mockRep := mock_user.NewMockUserRepository(mockCtrl)
 	mockRep.EXPECT().Create(ctx, "user1", "test@text,com", 32).Return(expected, nil)
 
-	userService := &UserService{userRepository: mockRep}
+	userService := &UserService{UserRepository: mockRep}
 
 	//when
 	rerult, _ := userService.Create(ctx, "user1", "test@text,com", 32)

@@ -11,7 +11,6 @@ import (
 )
 
 func EntClient(ctx context.Context, connectionString string) *ent.Client {
-	// client, err := ent.Open("mysql", "docker:docker@/todo
 	client, err := ent.Open("mysql", connectionString)
 	if err != nil {
 		log.Fatalf("failed connecting to mysql: %v", err)

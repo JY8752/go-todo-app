@@ -2,23 +2,18 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
+	"net/http"
+
+	"todo-app/application"
 	"todo-app/data"
-	"todo-app/data/user"
 )
 
 func main() {
 	ctx := context.Background()
-	client := data.EntClient(ctx, "docker:docker@/todo?parseTime=true")
-	userRepository := user.NewUserRepository(client)
-	defer client.Close()
+	client := data.EntClient(ctx, "root:root@tcp(localhost:3306)/todo-app?parseTime=true")
 
-	created, err := userRepository.Create(ctx, "user1", "text@text.com", 32)
-	if err != nil {
-		log.Fatalf("create error %v", err)
-	}
-	fmt.Printf("created: %v\n", created)
-	get, _ := userRepository.FindById(ctx, created.ID)
-	fmt.Printf("get: %v\n", get)
+	application.Route(ctx, client)
+
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
