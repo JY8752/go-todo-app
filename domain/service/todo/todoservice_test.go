@@ -20,7 +20,7 @@ func TestCreate(t *testing.T) {
 	mockRep := mock_todo.NewMockTodoReposityory(mockCtrl)
 	mockRep.EXPECT().Create(ctx, 1, "title", "detail").Return(expected, nil)
 
-	todoService := &TodoService{todoRepository: mockRep}
+	todoService := &TodoService{TodoRepository: mockRep}
 
 	//when
 	result, _ := todoService.Create(ctx, 1, "title", "detail")

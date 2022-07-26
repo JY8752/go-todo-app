@@ -12,9 +12,9 @@ type TodoReposityory interface {
 }
 
 type TodoService struct {
-	todoRepository TodoReposityory
+	TodoRepository TodoReposityory
 }
 
 func (service TodoService) Create(ctx context.Context, userId int, title, detail string) (*ent.Todo, error) {
-	return service.todoRepository.Create(ctx, userId, title, detail)
+	return service.TodoRepository.Create(ctx, userId, title, detail)
 }
